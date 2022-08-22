@@ -14,21 +14,11 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 db  = SQLAlchemy(app)
 
+####################### BASE DE DATOS #################
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_name = db.Column(db.String(200))
     user_ci = db.Column(db.String(200))
-
-class Ingreso(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
-    ingreso = db.Column(db.Integer)
-    
-class Egreso(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
-    egreso = db.Column(db.Integer)
-
 
 class Emprendimiento(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -40,7 +30,17 @@ class Emprendimiento(db.Model):
     emp_ingreso = db.relationship(Ingreso, backref='ingreso', lazy='select')
     emp_egreso = db.relationship(Egreso, backref='egreso', lazy='select')
 
+class Ingreso(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
+    ingreso = db.Column(db.Integer)
+    
+class Egreso(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
+    egreso = db.Column(db.Integer)
 
+####################### URL- ENDPOINTS ########
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
