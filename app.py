@@ -1,4 +1,5 @@
 from email.policy import default
+from mailbox import NoSuchMailboxError
 from flask import Flask, request, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
@@ -20,7 +21,13 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_name = db.Column(db.String(200))
     user_ci = db.Column(db.String(200))
+    useer_password = db.Column(db.String(200))
 
+class Productos (db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    nombre =db.Column(db.String(200))
+    cantidad =db.Column(db.Integer)
+    emprendimiento_correpsondiente = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
 
 class Ingreso(db.Model):
     id = db.Column(db.Integer,primary_key=True)
