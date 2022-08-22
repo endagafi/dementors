@@ -80,7 +80,7 @@ def create_user():
         print("entre en post")
         print(request.form['name'])
         print(request.form['ci'])
-        print(request.form)
+        print(request.form['pass'])
         user = User(
             user_name = request.form['name'],
             user_ci = request.form['ci'],
@@ -104,6 +104,30 @@ def login():
             return redirect(url_for('/'))
 
     return render_template("login.html", form=form)
+
+@app.route('/register_emp', methods = ['GET', 'POST'])
+def register_emp():
+    if request.method =='POST':
+        print("entre en post")
+        print(request.form['emp_name'])
+        print(request.form['emp_ruc'])
+        print(request.form['emp_city'])
+
+        print(request.form)
+        emprendimiento = Emprendimiento(
+            user_id = "1",
+            emp_name = request.form['emp_name'],
+            emp_ruc = request.form['emp_ruc'],
+            emp_city = request.form['emp_city'],
+            emp_desc = request.form['emp_desc']
+        )
+        print(emprendimiento)
+        db.session.add(emprendimiento)
+        db.session.commit()
+        return redirect(url_for("hello_world"))
+    
+    return render_template('register_emp.html')
+
 
 @app.route('/register_finanza', methods = ['GET', 'POST'])
 def finanzas():
