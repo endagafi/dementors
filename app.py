@@ -50,7 +50,7 @@ class Tareas(db.Model):
 
 class Emprendimiento(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    ##user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     emp_name = db.Column(db.String(200))
     emp_ruc = db.Column(db.String(200))
     emp_city = db.Column(db.String(200))
