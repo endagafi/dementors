@@ -11,9 +11,11 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/db.db'
 app.config['SECRET_KEY'] = 'mysupersecretultrasecretkey1234'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
 db  = SQLAlchemy(app)
 
 ####################### BASE DE DATOS #################
@@ -85,6 +87,19 @@ def create_user():
         db.session.commit()
         # return redirect(url_for('login'))
     return render_template('registro.html')
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(user_ci=form.ci.data).first()
+        if user:
+            print()
+            login_user(user)
+            return redirect(url_for('/'))
+
+    return render_template("login.html", form=form)
 
 @app.route('/register_finanza', methods = ['GET', 'POST'])
 def finanzas():
