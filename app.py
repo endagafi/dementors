@@ -1,3 +1,4 @@
+from email.policy import default
 from flask import Flask, request, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
@@ -31,6 +32,13 @@ class Egreso(db.Model):
     emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
     egreso = db.Column(db.Integer)
 
+class Tareas(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    tarea_desc = db.Column(db.String(200))
+    fecha = db.Colunm(db.DateTime(timezone=True))
+    completado = db.Column(db.Boolean, default=False)
+    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
+    
 class Emprendimiento(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -40,6 +48,8 @@ class Emprendimiento(db.Model):
     emp_desc = db.Column(db.String(200))
     emp_ingreso = db.relationship(Ingreso, backref='ingreso', lazy='select')
     emp_egreso = db.relationship(Egreso, backref='egreso', lazy='select')
+    emp_tareas = db.relationship(Tareas, backref='tarea', lazy='select')
+
 ####################### URL- ENDPOINTS ########
 @login_manager.user_loader
 def load_user(user_id):
