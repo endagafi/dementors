@@ -35,10 +35,10 @@ class Egreso(db.Model):
 class Tareas(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     tarea_desc = db.Column(db.String(200))
-    fecha = db.Colunm(db.DateTime(timezone=True))
+    fecha = db.Column(db.DateTime(timezone=True))
     completado = db.Column(db.Boolean, default=False)
     emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
-    
+
 class Emprendimiento(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
