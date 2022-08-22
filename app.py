@@ -20,15 +20,6 @@ class User(UserMixin, db.Model):
     user_name = db.Column(db.String(200))
     user_ci = db.Column(db.String(200))
 
-class Emprendimiento(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    emp_name = db.Column(db.String(200))
-    emp_ruc = db.Column(db.String(200))
-    emp_city = db.Column(db.String(200))
-    emp_desc = db.Column(db.String(200))
-    emp_ingreso = db.relationship(Ingreso, backref='ingreso', lazy='select')
-    emp_egreso = db.relationship(Egreso, backref='egreso', lazy='select')
 
 class Ingreso(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -40,6 +31,15 @@ class Egreso(db.Model):
     emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
     egreso = db.Column(db.Integer)
 
+class Emprendimiento(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    emp_name = db.Column(db.String(200))
+    emp_ruc = db.Column(db.String(200))
+    emp_city = db.Column(db.String(200))
+    emp_desc = db.Column(db.String(200))
+    emp_ingreso = db.relationship(Ingreso, backref='ingreso', lazy='select')
+    emp_egreso = db.relationship(Egreso, backref='egreso', lazy='select')
 ####################### URL- ENDPOINTS ########
 @login_manager.user_loader
 def load_user(user_id):
