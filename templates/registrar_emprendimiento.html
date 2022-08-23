@@ -19,14 +19,21 @@
       </div>
       <div class="space-y-6 sm:space-y-5">
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Nombre del negocio </label>
+          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Nombre del emprendimiento </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+            <input type="text" name="emp_name" id="emp_name" autocomplete="emp_name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
           </div>
         </div>
 
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tipo de negocio </label>
+          <label for="city" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> RUC </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <input type="text" name="emp_ruc" id="emp_ruc" autocomplete="emp_ruc" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+          </div>
+        </div>
+
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tipo de emprendimiento </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <select id="country" name="country" autocomplete="country-name" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
               <option>Gastronom&iacute;a</option>
@@ -47,45 +54,23 @@
         </div>
 
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="email" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Direcci&oacute;n</label>
+          <label for="email" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Ciudad</label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input id="email" name="email" type="text" autocomplete="email" class="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
+            <input id="emp_city" name="emp_city" type="text" autocomplete="emp_city" class="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
           </div>
         </div>
-
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Ciudad </label>
+          <label for="street-address" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Descripci&oacute;n </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <select id="country" name="country" autocomplete="country-name" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-              <option>Gran Asunci&oacute;n</option>
-              <option>Ciudad del Este</option>
-              <option>Encarnaci&oacute;n</option>
-              <option>Villa Hayes</option>
-              <option>Otros</option>
-            </select>
+            <input type="text" name="emp_desc" id="emp_desc" autocomplete="street-address" class="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
           </div>
         </div>
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="street-address" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Pa&iacute;s </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md">
-          </div>
-        </div>
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="city" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> C&oacute;digo postal </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="city" id="city" autocomplete="address-level2" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-          </div>
-        </div>
-
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label for="country" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Tipo de comercio </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <select id="country" name="country" autocomplete="country-name" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-              <option>Virtual</option>
-              <option>Tradicional</option>
+              <option>Tienda f&iacute;sica</option>
+              <option>Tienda virtual</option>
               <option>Ambos</option>
             </select>
           </div>
