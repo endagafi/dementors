@@ -72,7 +72,7 @@ class LoginForm(FlaskForm):
 
 @app.route('/')
 def dashboar():
-    return render_template('dashboard.html')
+    return render_template('index.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def create_user():
@@ -90,7 +90,7 @@ def create_user():
         db.session.add(user)
         db.session.commit()
         # return redirect(url_for('login'))
-    return render_template('registro.html')
+    return render_template('login.html')
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -105,11 +105,13 @@ def login():
 
     return render_template("login.html", form=form)
 
+    
+
 @app.route('/emprendimientos')
 def emprendimientos():
     return render_template('emprendimientos.html')
 
-@app.route('/register_emp', methods = ['GET', 'POST'])
+@app.route('/registrar_emprendimiento', methods = ['GET', 'POST'])
 def register_emp():
     if request.method =='POST':
         print("entre en post")
@@ -130,13 +132,13 @@ def register_emp():
         db.session.commit()
         return redirect(url_for("hello_world"))
     
-    return render_template('register_emp.html')
+    return render_template('registrar_emprendimiento.html')
 
 @app.route('/main_page')
 def main_page():
-    return render_template('main_page.html')
+    return render_template('profile.html')
 
-@app.route('/profile')
+@app.route('/profile', methods = ['GET', 'POST'])
 def profile():
     return render_template('profile.html')
 
