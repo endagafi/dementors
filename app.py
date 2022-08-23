@@ -71,8 +71,12 @@ class LoginForm(FlaskForm):
 
 
 @app.route('/')
-def dashboar():
+def index():
     return render_template('index.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def create_user():
