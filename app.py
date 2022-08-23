@@ -109,7 +109,7 @@ def login():
 def emprendimientos():
     return render_template('emprendimientos.html')
 
-@app.route('/register_emp', methods = ['GET', 'POST'])
+@app.route('/registrar_emprendimiento', methods = ['GET', 'POST'])
 def register_emp():
     if request.method =='POST':
         print("entre en post")
