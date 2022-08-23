@@ -130,7 +130,7 @@ def register_emp():
         db.session.commit()
         return redirect(url_for("hello_world"))
     
-    return render_template('register_emp.html')
+    return render_template('registrar_emprendimiento.html')
 
 @app.route('/main_page')
 def main_page():
