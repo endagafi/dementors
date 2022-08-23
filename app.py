@@ -101,7 +101,7 @@ def login():
         if user:
             print()
             login_user(user)
-            return redirect(url_for('/'))
+            return redirect(url_for('/profile'))
 
     return render_template("login.html", form=form)
 
