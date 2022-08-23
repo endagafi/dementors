@@ -164,5 +164,6 @@ def calendar():
 
 @app.route('/piechart')
 def piechart():
-    total = Finanzas.query.all()
+    ingresos = Ingreso.query.all()
+    egresos = Egreso.query.all()
     return render_template('piechart.html', total=total)
