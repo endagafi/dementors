@@ -105,6 +105,8 @@ def login():
 
     return render_template("login.html", form=form)
 
+    
+
 @app.route('/emprendimientos')
 def emprendimientos():
     return render_template('emprendimientos.html')
@@ -136,7 +138,7 @@ def register_emp():
 def main_page():
     return render_template('profile.html')
 
-@app.route('/profile')
+@app.route('/profile', methods = ['GET', 'POST'])
 def profile():
     return render_template('profile.html')
 
