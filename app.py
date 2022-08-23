@@ -71,8 +71,8 @@ class LoginForm(FlaskForm):
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def dashboar():
+    return render_template('dashboard.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def create_user():
@@ -105,6 +105,10 @@ def login():
 
     return render_template("login.html", form=form)
 
+@app.route('/emprendimientos')
+def emprendimientos():
+    return render_template('emprendimientos.html')
+
 @app.route('/register_emp', methods = ['GET', 'POST'])
 def register_emp():
     if request.method =='POST':
@@ -112,7 +116,7 @@ def register_emp():
         print(request.form['emp_name'])
         print(request.form['emp_ruc'])
         print(request.form['emp_city'])
-
+        print(request.form['emp_desc'])
         print(request.form)
         emprendimiento = Emprendimiento(
             user_id = "1",
@@ -128,6 +132,13 @@ def register_emp():
     
     return render_template('register_emp.html')
 
+@app.route('/main_page')
+def main_page():
+    return render_template('main_page.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
 
 @app.route('/register_finanza', methods = ['GET', 'POST'])
 def finanzas():
