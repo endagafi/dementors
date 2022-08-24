@@ -24,18 +24,25 @@
     <title>Document</title>
   </head>
   <style>
-    .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-      background-color: #074D44 !important;
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited {
+      background-color: #074d44 !important;
     }
 
     body {
-      font-family: 'Open Sans', sans-serif !important;
+      font-family: "Open Sans", sans-serif !important;
     }
   </style>
   <body>
     <div class="mx-5">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img class="mx-auto h-22 w-auto" src="static/Digifem_index.png" alt="Workflow">
+        <img
+          class="mx-auto h-22 w-auto"
+          src="static/Digifem_index.png"
+          alt="Workflow"
+        />
         <button
           class="navbar-toggler"
           type="button"
@@ -185,27 +192,46 @@
                 <h5 class="card-header">Balance general</h5>
                 <div class="card-body">
                   <div class="col-10">
-                  <canvas id="traffic-chart" style="max-width: 500px"></canvas>
+                    <canvas
+                      id="traffic-chart"
+                      style="max-width: 500px"
+                    ></canvas>
                   </div>
-                  <form action="" class="mt-5">
+                  <form action="/add_income" class="mt-5" method="POST">
                     <div class="ms-4">
                       <div class="input-group mb-3">
-                        <input type="number"
-                        name="ingreso"
-                        id="ingreso"
-                        placeholder="Ingreso" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <button class="btn btn-sm btn-success" type="submit">Agregar ingreso</button>
+                        <input
+                          type="number"
+                          name="ingreso"
+                          id="ingreso"
+                          placeholder="Ingreso"
+                          class="form-control"
+                          placeholder="Recipient's username"
+                          aria-label="Recipient's username"
+                          aria-describedby="basic-addon2"
+                        />
+                        <button class="btn btn-sm btn-success" type="submit">
+                          Agregar ingreso
+                        </button>
                       </div>
                     </div>
                   </form>
                   <form action="" class="mt-5">
                     <div class="ms-4">
                       <div class="input-group mb-3">
-                        <input type="number"
-                        name="egreso"
-                        id="egreso"
-                        placeholder="Egresos" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <button class="btn btn-sm btn-danger" type="submit">Agregar egreso</button>
+                        <input
+                          type="number"
+                          name="egreso"
+                          id="egreso"
+                          placeholder="Egresos"
+                          class="form-control"
+                          placeholder="Recipient's username"
+                          aria-label="Recipient's username"
+                          aria-describedby="basic-addon2"
+                        />
+                        <button class="btn btn-sm btn-danger" type="submit">
+                          Agregar egreso
+                        </button>
                       </div>
                     </div>
                   </form>

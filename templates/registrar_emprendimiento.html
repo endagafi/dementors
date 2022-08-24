@@ -10,7 +10,7 @@
 </head>
 <body>
     
-<form class="space-y-8 divide-y divide-gray-200">
+<form class="space-y-8 divide-y divide-gray-200" method="POST" action="/registrar_emprendimiento">
   <div class="mt-16 sm:mt-24 lg:mt-20 mb-20 lg:col-span-6">
     <div class="bg-white border border-gray-300 sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
       <div class="px-4 py-8 sm:px-10">
@@ -26,13 +26,13 @@
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700"> Nombre del Emprendimiento </label>
               <div class="mt-1">
-                <input id="email" name="email" type="text" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-[gray-300] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#074D44] focus:border-[#074D44] sm:text-sm">
+                <input id="emp_name" name="emp_name" type="text" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-[gray-300] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#074D44] focus:border-[#074D44] sm:text-sm">
             </div>
           </div>
           <div class="mt-6 sm:col-span-2">
             <label for="last-name" class="block text-sm font-medium text-gray-700">RUC</label>
             <div class="mt-1">
-              <input id="email" name="email" type="text" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-[gray-300] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#074D44] focus:border-[#074D44] sm:text-sm">
+              <input id="emp_ruc" name="emp_ruc" type="text" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-[gray-300] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#074D44] focus:border-[#074D44] sm:text-sm">
             </div>
           </div>
           <div class="mt-6 sm:col-span-2">
@@ -63,14 +63,14 @@
           <div class="mt-6 sm:col-span-2">
             <label for="email" class="block text-sm font-medium text-gray-700">Ciudad</label>
             <div class="mt-1">
-              <input id="email" name="email" type="text" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-[gray-300] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#074D44] focus:border-[#074D44] sm:text-sm">
+              <input id="emp_city" name="emp_city" type="text" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-[gray-300] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#074D44] focus:border-[#074D44] sm:text-sm">
             </div>
           </div>
          
           <div class="mt-6 sm:col-span-2">
             <label for="message" class="block text-sm font-medium text-gray-700">Descripción</label>
             <div class="mt-1">
-              <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-[#074D44] border border-gray-300 rounded-md"></textarea>
+              <textarea id="emp_desc" name="emp_desc" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-[#074D44] border border-gray-300 rounded-md"></textarea>
             </div>
           </div>
 
