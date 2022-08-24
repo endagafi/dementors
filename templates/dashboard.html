@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="icon" type="image/png" href="static/df-16x16.png">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -70,7 +71,7 @@
         </div>
       </nav>
     </div>
-    <p class="fs-1 text-center">Nombre Emprendimiento</p>
+    <p class="fs-1 text-center">{{ emprendimiento.emp_name }}</p>
     <div class="mx-5">
       <div class="row">
         <div class="col-8">
@@ -123,7 +124,7 @@
                   </table>
                 </div>
                 <a href="#" class="btn btn-block btn-light"
-                  >Agregar todo al calendario</a
+                  >Agregar Tarea</a
                 >
               </div>
             </div>
@@ -138,7 +139,7 @@
                       <tr>
                         <th scope="col">Producto</th>
                         <th scope="col">Descripci&oacute;n</th>
-                        <th scope="col">Cantidad</th>
+                        <th scope="col">Fecha</th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
@@ -177,7 +178,7 @@
                   </table>
                 </div>
                 <a href="#" class="btn btn-block btn-light"
-                  >Agregar todo al calendario</a
+                  >Agregar Producto</a
                 >
               </div>
             </div>
