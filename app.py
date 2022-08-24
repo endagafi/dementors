@@ -79,6 +79,11 @@ def index():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/dashboard/<int:emp_id>')
+def dashboard_emp(emp_id):
+    emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
+    return render_template('dashboard.html',emprendimiento=emprendimiento)
+
 @app.route('/register', methods = ['GET', 'POST'])
 def create_user():
     if request.method =='POST':
@@ -106,11 +111,11 @@ def login():
         if ci != "":
             print("voy a conusltar")
             user = User.query.filter_by(user_ci=ci).first()
-            print("================================hbfkja")
             if user:
-                print("=====================fdhbjbdshhdbsbgfbskhdgf")
                 login_user(user)
                 return redirect(url_for('profile'))
+            else:
+                return redirect(url_for('/'))
     except:
         return render_template("login.html", form1 = form1)
 
@@ -160,21 +165,32 @@ def profile():
     emprendimientos = Emprendimiento.query.filter_by(user_id=current_user.id)
     return render_template('profile.html', emprendimientos=emprendimientos)
 
-# @app.route('/add_income', methods = ['GET', 'POST'])
-# def add_income(emp_id):
-#     if request.method == 'POST':
-#         emprendimiento_id = Emprendimiento.query.filter_by(emp_id=emp_id).first
-#         print(emprendimiento_id)
-#         ingreso = Ingreso(
-#             emprendimiento_id = emp_id,
-#             ingreso = request.form['ingreso']
-#         )
-#         print(ingreso)
-#         db.session.add(ingreso)
-#         db.session.commit()
-#         return redirect(url_for('dashboard.html'))
+@app.route('/add_income/<int:emp_id>', methods = ['GET', 'POST'])
+def add_income(emp_id):
+    emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
+    if request.method == 'POST':
+        ingreso = Ingreso(
+            emprendimiento_id = emp_id,
+            ingreso = request.form['ingreso']
+        )
+        print(ingreso)
+        db.session.add(ingreso)
+        db.session.commit()
+        redirect(url_for('ver_emprendimientos',emp_id=emp_id))
+    return render_template('dashboard.html',emprendimiento=emprendimiento)
 
-
+@app.route('/add_egreso/<int:emp_id>', methods = ['GET', 'POST'])
+def add_egreso(emp_id):
+    emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
+    if request.method == 'POST':
+        egreso = Egreso(
+            emprendimiento_id = emp_id,
+            egreso = request.form['egreso']
+        )
+        db.session.add(egreso)
+        db.session.commit()
+        redirect(url_for('ver_emprendimientos',emp_id=emp_id))
+    return render_template('dashboard.html',emprendimiento=emprendimiento)
 
 @app.route('/logout')
 @login_required
