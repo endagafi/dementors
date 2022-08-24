@@ -190,7 +190,7 @@
               <!-- Another widget will go here -->
 
               <div class="card">
-                <h5 class="card-header">Balance general</h5>
+                <h5 class="card-header">Balance</h5>
                 <div class="card-body">
                   <div class="col-10">
                     <canvas
@@ -198,7 +198,7 @@
                       style="max-width: 500px"
                     ></canvas>
                   </div>
-                  <form action="/add_income" class="mt-5" method="POST">
+                  <form action="{{url_for('add_income', emp_id=emprendimiento.emp_id)}}" class="mt-5" method="POST">
                     <div class="ms-4">
                       <div class="input-group mb-3">
                         <input
@@ -217,7 +217,7 @@
                       </div>
                     </div>
                   </form>
-                  <form action="" class="mt-5">
+                  <form action="{{url_for('add_egreso', emp_id=emprendimiento.emp_id)}}" method="POST" class="mt-5">
                     <div class="ms-4">
                       <div class="input-group mb-3">
                         <input
