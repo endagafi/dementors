@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="icon" type="image/png" href="static/df-16x16.png">
+    <link rel="icon" type="image/png" href="static/df-16x16.png" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,11 +41,9 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img
           class="mx-auto h-22 w-auto"
-
           src="/static/Digifem_index.png"
-
           alt="Workflow"
-          width="100" 
+          width="100"
           height="30"
         />
         <button
@@ -71,7 +69,9 @@
               <a class="nav-link" href="{{ url_for('profile') }}">Perfil</a>
             </li>
           </ul>
-          <a href="/logout"type="submit" class="btn btn-sm btn-danger">Cerrar sesi&oacute;n</a>
+          <a href="/logout" type="submit" class="btn btn-sm btn-danger"
+            >Cerrar sesi&oacute;n</a
+          >
         </div>
       </nav>
     </div>
@@ -88,7 +88,7 @@
                     <thead>
                       <tr>
                         <th scope="col">Tarea</th>
-                        <th scope="col">Cliente / Proveedor </th>
+                        <th scope="col">Cliente / Proveedor</th>
                         <th scope="col">Fecha</th>
                         <th scope="col"></th>
                       </tr>
@@ -127,9 +127,7 @@
                     </tbody>
                   </table>
                 </div>
-                <a href="#" class="btn btn-block btn-light"
-                  >Agregar tarea</a
-                >
+                <a href="#" class="btn btn-block btn-light">Agregar tarea</a>
               </div>
             </div>
           </div>
@@ -181,9 +179,7 @@
                     </tbody>
                   </table>
                 </div>
-                <a href="#" class="btn btn-block btn-light"
-                  >Agregar producto</a
-                >
+                <a href="#" class="btn btn-block btn-light">Agregar producto</a>
               </div>
             </div>
           </div>
@@ -202,7 +198,11 @@
                       style="max-width: 500px"
                     ></canvas>
                   </div>
-                  <form action="{{url_for('add_income', emp_id=emprendimiento.emp_id)}}" class="mt-5" method="POST">
+                  <form
+                    action="{{url_for('ver_emprendimientos', emp_id=emprendimiento.emp_id, add=1)}}"
+                    class="mt-5"
+                    method="POST"
+                  >
                     <div class="ms-4">
                       <div class="input-group mb-3">
                         <input
@@ -221,7 +221,11 @@
                       </div>
                     </div>
                   </form>
-                  <form action="{{url_for('add_egreso', emp_id=emprendimiento.emp_id)}}" method="POST" class="mt-5">
+                  <form
+                    action="{{url_for('ver_emprendimientos', emp_id=emprendimiento.emp_id, add=0)}}"
+                    method="POST"
+                    class="mt-5"
+                  >
                     <div class="ms-4">
                       <div class="input-group mb-3">
                         <input
@@ -263,8 +267,21 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-
+    <input
+      type="hidden"
+      name="ingresos"
+      id="suma_ingresos"
+      value="{{suma_ingreso}}"
+    />
+    <input
+      type="hidden"
+      name="egresos"
+      id="suma_egresos"
+      value="{{suma_egreso}}"
+    />
     <script>
+      var ingreso = document.getElementById("suma_ingresos").value;
+      var egreso = document.getElementById("suma_egresos").value;
       var ctxP = document.getElementById("traffic-chart").getContext("2d");
       var PieChart = new Chart(ctxP, {
         type: "pie",
@@ -272,7 +289,7 @@
           labels: ["Egresos", "Ingresos"],
           datasets: [
             {
-              data: [90, 200],
+              data: [egreso, ingreso],
               backgroundColor: [
                 "#F7464A",
                 "#46bf6a",

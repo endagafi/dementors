@@ -79,11 +79,6 @@ def index():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/dashboard/<int:emp_id>')
-def dashboard_emp(emp_id):
-    emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
-    return render_template('dashboard.html',emprendimiento=emprendimiento)
-
 @app.route('/register', methods = ['GET', 'POST'])
 def create_user():
     if request.method =='POST':
@@ -111,11 +106,11 @@ def login():
         if ci != "":
             print("voy a conusltar")
             user = User.query.filter_by(user_ci=ci).first()
+            print("================================hbfkja")
             if user:
+                print("=====================fdhbjbdshhdbsbgfbskhdgf")
                 login_user(user)
                 return redirect(url_for('profile'))
-            else:
-                return redirect(url_for('/'))
     except:
         return render_template("login.html", form1 = form1)
 
@@ -126,14 +121,29 @@ def login():
 def emprendimientos():
     return render_template('emprendimientos.html')
 
-@app.route('/ver_emprendimientos/<int:emp_id>', methods=['POST','GET'])
+@app.route('/ver_emprendimientos/<int:emp_id>', defaults={'add': None}, methods=['POST','GET'])
+@app.route('/ver_emprendimientos/<int:emp_id>/<int:add>', methods=['POST','GET'])
 @login_required
-def ver_emprendimientos(emp_id):
+def ver_emprendimientos(emp_id, add):
+    if add == 1:
+        add_income(emp_id)
+    elif add == 0:
+        add_egreso(emp_id)
     user = User.query.filter_by(id=current_user.id).first()
     emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
+    ingresos = Ingreso.query.filter_by(emprendimiento_id=emprendimiento.emp_id).all()
+    egresos = Egreso.query.filter_by(emprendimiento_id=emprendimiento.emp_id).all()
+    suma_ingreso = 0
+    suma_egreso = 0
+    for x in ingresos:
+        print('ingreso:', x.ingreso)
+        suma_ingreso = suma_ingreso + x.ingreso
+    for x in egresos:
+        print('egresos:', x.egreso)
+        suma_egreso = suma_egreso + x.egreso
     if not emprendimiento:
         return 'no existe el emprendimiento'
-    return render_template('dashboard.html', user=user, emprendimiento=emprendimiento)
+    return render_template('dashboard.html', user=user, emprendimiento=emprendimiento, suma_ingreso=suma_ingreso, suma_egreso=suma_egreso)
 
 
 @app.route('/registrar_emprendimiento', methods = ['GET', 'POST'])
@@ -165,7 +175,7 @@ def profile():
     emprendimientos = Emprendimiento.query.filter_by(user_id=current_user.id)
     return render_template('profile.html', emprendimientos=emprendimientos)
 
-@app.route('/add_income/<int:emp_id>', methods = ['GET', 'POST'])
+#@app.route('/add_income/<int:emp_id>', methods = ['GET', 'POST'])
 def add_income(emp_id):
     emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
     if request.method == 'POST':
@@ -176,10 +186,8 @@ def add_income(emp_id):
         print(ingreso)
         db.session.add(ingreso)
         db.session.commit()
-        redirect(url_for('ver_emprendimientos',emp_id=emp_id))
-    return render_template('dashboard.html',emprendimiento=emprendimiento)
 
-@app.route('/add_egreso/<int:emp_id>', methods = ['GET', 'POST'])
+#@app.route('/add_egreso/<int:emp_id>', methods = ['GET', 'POST'])
 def add_egreso(emp_id):
     emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
     if request.method == 'POST':
@@ -189,8 +197,8 @@ def add_egreso(emp_id):
         )
         db.session.add(egreso)
         db.session.commit()
-        redirect(url_for('ver_emprendimientos',emp_id=emp_id))
-    return render_template('dashboard.html',emprendimiento=emprendimiento)
+
+
 
 @app.route('/logout')
 @login_required
