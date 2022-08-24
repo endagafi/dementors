@@ -19,7 +19,7 @@
         <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">Estos son tus emprendimientos registrados:</p>
       </div>
       <div class="flex mt-12 mx-auto gap-3">
-        {% for emprendimiento in emprendimiento %}
+        {% for emprendimiento in emprendimientos %}
         <div class="flex flex-col rounded-lg shadow-lg overflow-hidden w-[33vw]">
           <div class="flex-shrink-0">
             <img class="h-48 w-full object-cover" src="/static/SoCool.png" alt="">
@@ -27,7 +27,7 @@
           <div class="flex-1 bg-white p-6 flex flex-col justify-between">
             <div class="flex-1">
               <p class="text-sm font-medium text-indigo-600">
-                <a href="{{url_for('ver_emprendimientos', id=emprendimiento.emp_id)}}" class="hover:underline"> Ver </a>
+                <a href="{{url_for('ver_emprendimientos', emp_id=emprendimiento.emp_id)}}" class="hover:underline"> Ver </a>
               </p>
               <a href="#" class="block mt-2">
                 <p class="text-xl font-semibold text-gray-900">{{ emprendimiento.emp_name }}</p>
