@@ -23,121 +23,221 @@
     />
     <title>Document</title>
   </head>
+  <style>
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited {
+      background-color: #074d44 !important;
+    }
+
+    body {
+      font-family: "Open Sans", sans-serif !important;
+    }
+  </style>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <img src="/Digifem.png" alt="Digifem logo" class="ms-4" />
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="collapse navbar-collapse d-flex justify-content-evenly"
-        id="navbarNav"
-      >
-        <ul class="navbar-nav ms-4">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Perfil</a>
-          </li>
-        </ul>
-        <button class="">LogOut</button>
-      </div>
-    </nav>
-    <p class="m-50 text-center fs-1"><b>TU EMPRENDIMIENTO CHOTO</b></p>
-    <div class="row">
-      <div class="col-12 col-xl-8 mb-4 mb-lg-0">
-        <div class="card">
-          <h5 class="card-header">Lista de tareas</h5>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Date</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Entrega de pedidos</td>
-                    <td>Juan Perez</td>
-                    <td>Aug 31 2022</td>
-                    <td>
-                      <a href="#" class="btn btn-sm btn-primary"
-                        >Agregar al calendario</a
-                      >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Reposicion de stock</td>
-                    <td>Rosa Melorto</td>
-                    <td>Aug 28 2022</td>
-                    <td>
-                      <a href="#" class="btn btn-sm btn-primary"
-                        >Agregar al calendario</a
-                      >
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Compra de insumos</td>
-                    <td>Indutex SA</td>
-                    <td>Sep 09 2022</td>
-                    <td>
-                      <a href="#" class="btn btn-sm btn-primary"
-                        >Agregar al calendario</a
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+    <div class="mx-5">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img
+          class="mx-auto h-22 w-auto"
+          src="static/Digifem_index.png"
+          alt="Workflow"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse d-flex justify-content-evenly"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav ms-6">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Inicio </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Perfil</a>
+            </li>
+          </ul>
+          <button class="btn btn-sm btn-danger">LogOut</button>
+        </div>
+      </nav>
+    </div>
+    <p class="fs-1 text-center">Nombre Emprendimiento</p>
+    <div class="mx-5">
+      <div class="row">
+        <div class="col-8">
+          <div class="col-12">
+            <div class="card">
+              <h5 class="card-header">Lista de tareas</h5>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Tarea</th>
+                        <th scope="col">Nota</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Entrega de pedidos</td>
+                        <td>Juan Perez</td>
+                        <td>Aug 31 2022</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-primary"
+                            >Agregar al calendario</a
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Reposicion de stock</td>
+                        <td>Rosa Melorto</td>
+                        <td>Aug 28 2022</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-primary"
+                            >Agregar al calendario</a
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Compra de insumos</td>
+                        <td>Indutex SA</td>
+                        <td>Sep 09 2022</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-primary"
+                            >Agregar al calendario</a
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-block btn-light"
+                  >Agregar todo al calendario</a
+                >
+              </div>
             </div>
-            <a href="#" class="btn btn-block btn-light"
-              >Agregar todo al calendario</a
-            >
+          </div>
+          <div class="col-12 my-5">
+            <div class="card">
+              <h5 class="card-header">Lista de Stock</h5>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Entrega de pedidos</td>
+                        <td>Juan Perez</td>
+                        <td>Aug 31 2022</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-primary"
+                            >Agregar al calendario</a
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Reposicion de stock</td>
+                        <td>Rosa Melorto</td>
+                        <td>Aug 28 2022</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-primary"
+                            >Agregar al calendario</a
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Compra de insumos</td>
+                        <td>Indutex SA</td>
+                        <td>Sep 09 2022</td>
+                        <td>
+                          <a href="#" class="btn btn-sm btn-primary"
+                            >Agregar al calendario</a
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <a href="#" class="btn btn-block btn-light"
+                  >Agregar todo al calendario</a
+                >
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-12 col-xl-4">
-        <!-- Another widget will go here -->
+        <div class="col-4">
+          <div class="row">
+            <div class="col-12">
+              <!-- Another widget will go here -->
 
-        <div class="card">
-          <h5 class="card-header">Balance general</h5>
-          <div class="card-body">
-            <canvas id="traffic-chart" style="max-width: 500px"></canvas>
-            <form action="" class="mt-5">
-              <div class="ms-4">
-                <input
-                  type="number"
-                  name="ingreso"
-                  id="ingreso"
-                  placeholder="Ingreso"
-                />
-                <button type="submit">Agregar ingreso</button>
+              <div class="card">
+                <h5 class="card-header">Balance general</h5>
+                <div class="card-body">
+                  <div class="col-10">
+                    <canvas
+                      id="traffic-chart"
+                      style="max-width: 500px"
+                    ></canvas>
+                  </div>
+                  <form action="/add_income" class="mt-5" method="POST">
+                    <div class="ms-4">
+                      <div class="input-group mb-3">
+                        <input
+                          type="number"
+                          name="ingreso"
+                          id="ingreso"
+                          placeholder="Ingreso"
+                          class="form-control"
+                          placeholder="Recipient's username"
+                          aria-label="Recipient's username"
+                          aria-describedby="basic-addon2"
+                        />
+                        <button class="btn btn-sm btn-success" type="submit">
+                          Agregar ingreso
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <form action="" class="mt-5">
+                    <div class="ms-4">
+                      <div class="input-group mb-3">
+                        <input
+                          type="number"
+                          name="egreso"
+                          id="egreso"
+                          placeholder="Egresos"
+                          class="form-control"
+                          placeholder="Recipient's username"
+                          aria-label="Recipient's username"
+                          aria-describedby="basic-addon2"
+                        />
+                        <button class="btn btn-sm btn-danger" type="submit">
+                          Agregar egreso
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </form>
-            <form action="" class="mt-5">
-              <div class="mt-4">
-                <input
-                  type="number"
-                  name="egreso"
-                  id="egreso"
-                  placeholder="Egresos"
-                  class="ms-4"
-                />
-                <button type="submit">Agregar egreso</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

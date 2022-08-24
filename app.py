@@ -1,3 +1,4 @@
+
 from email.policy import default
 from mailbox import NoSuchMailboxError
 from flask import Flask, request, render_template, url_for, redirect
@@ -29,16 +30,16 @@ class Productos (db.Model):
     id = db.Column(db.Integer,primary_key=True)
     nombre =db.Column(db.String(200))
     cantidad =db.Column(db.Integer)
-    emprendimiento_correpsondiente = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
+    emprendimiento_correpsondiente = db.Column(db.Integer, db.ForeignKey('emprendimiento.emp_id'))
 
 class Ingreso(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
+    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.emp_id'))
     ingreso = db.Column(db.Integer)
     
 class Egreso(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
+    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.emp_id'))
     egreso = db.Column(db.Integer)
 
 class Tareas(db.Model):
@@ -46,10 +47,10 @@ class Tareas(db.Model):
     tarea_desc = db.Column(db.String(200))
     fecha = db.Column(db.DateTime(timezone=True))
     completado = db.Column(db.Boolean, default=False)
-    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.id'))
+    emprendimiento_id = db.Column(db.Integer, db.ForeignKey('emprendimiento.emp_id'))
 
 class Emprendimiento(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
+    emp_id = db.Column(db.Integer,primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     emp_name = db.Column(db.String(200))
     emp_ruc = db.Column(db.String(200))
@@ -93,39 +94,45 @@ def create_user():
         print(user)
         db.session.add(user)
         db.session.commit()
-        # return redirect(url_for('login'))
-    return render_template('login.html')
+        return redirect(url_for('login'))
+    return render_template('index.html')
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
-
+    user = User.query.filter_by(user_ci=form.ci.data).first()
+    print(user)
     if form.validate_on_submit():
         user = User.query.filter_by(user_ci=form.ci.data).first()
         if user:
-            print()
             login_user(user)
-            return redirect(url_for('/profile'))
+            return redirect(url_for('profile'))
 
     return render_template("login.html", form=form)
 
     
 
 @app.route('/emprendimientos')
+@login_required
 def emprendimientos():
     return render_template('emprendimientos.html')
+
+@app.route('/ver_emprendimientos/<int:emp_id>', methods=['POST','GET'])
+@login_required
+def ver_emprendimientos(emp_id):
+    user = User.query.filter_by(id=current_user.id).first()
+    emprendimiento = Emprendimiento.query.filter_by(emp_id=emp_id).first()
+    if not emprendimiento:
+        return 'no existe el emprendimiento'
+    return render_template('dashboard.html', user=user, emprendimiento=emprendimiento)
+
 
 @app.route('/registrar_emprendimiento', methods = ['GET', 'POST'])
 def register_emp():
     if request.method =='POST':
         print("entre en post")
-        print(request.form['emp_name'])
-        print(request.form['emp_ruc'])
-        print(request.form['emp_city'])
-        print(request.form['emp_desc'])
-        print(request.form)
         emprendimiento = Emprendimiento(
-            user_id = "1",
+            user_id = current_user.id,
             emp_name = request.form['emp_name'],
             emp_ruc = request.form['emp_ruc'],
             emp_city = request.form['emp_city'],
@@ -134,42 +141,39 @@ def register_emp():
         print(emprendimiento)
         db.session.add(emprendimiento)
         db.session.commit()
-        return redirect(url_for("hello_world"))
+        return redirect(url_for("profile"))
     
     return render_template('registrar_emprendimiento.html')
 
 @app.route('/main_page')
+@login_required
 def main_page():
     return render_template('profile.html')
 
 @app.route('/profile', methods = ['GET', 'POST'])
+@login_required
 def profile():
-    return render_template('profile.html')
+    emprendimientos = Emprendimiento.query.filter_by(user_id=current_user.id)
+    return render_template('profile.html', emprendimientos=emprendimientos)
 
-@app.route('/register_finanza', methods = ['GET', 'POST'])
-def finanzas():
-    if request.method =='POST':
-        print('entre en post la concha de la lora')
-        total = Finanzas(
-            ingresos = request.form['ingresos'],
-            egresos = request.form['egresos']
-    )
-        db.session.add(total)
-        db.session.commit()
-        return redirect(url_for('piechart'))
-    else:
-        return render_template('finanzas.html')
-
-
-@app.route('/calendar')
-def calendar():
-    return render_template('calendar.html')
+# @app.route('/add_income', methods = ['GET', 'POST'])
+# def add_income(emp_id):
+#     if request.method == 'POST':
+#         emprendimiento_id = Emprendimiento.query.filter_by(emp_id=emp_id).first
+#         print(emprendimiento_id)
+#         ingreso = Ingreso(
+#             emprendimiento_id = emp_id,
+#             ingreso = request.form['ingreso']
+#         )
+#         print(ingreso)
+#         db.session.add(ingreso)
+#         db.session.commit()
+#         return redirect(url_for('dashboard.html'))
 
 
 
-
-@app.route('/piechart')
-def piechart():
-    ingresos = Ingreso.query.all()
-    egresos = Egreso.query.all()
-    return render_template('piechart.html', total=total)
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
