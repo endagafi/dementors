@@ -71,8 +71,12 @@ class LoginForm(FlaskForm):
 
 
 @app.route('/')
-def dashboar():
+def index():
     return render_template('index.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def create_user():
@@ -166,5 +170,6 @@ def calendar():
 
 @app.route('/piechart')
 def piechart():
-    total = Finanzas.query.all()
+    ingresos = Ingreso.query.all()
+    egresos = Egreso.query.all()
     return render_template('piechart.html', total=total)

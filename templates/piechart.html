@@ -37,7 +37,12 @@
     <script src="path/to/chartjs/dist/chart.js"></script>
 
     {% for asd in total %}
-    <input type="number" name="total" id="total" value="{{ asd }}" />
+    <input
+      type="number"
+      name="total"
+      id="total"
+      value="{{ current_user.id }}"
+    />
     {% endfor %}
 
     <script>

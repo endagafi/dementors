@@ -1,14 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
-<body>
-    <h1>Esto sera el dashboard</h1>
-    <a href="{{ url_for('login') }}">Login</a> 
-    <a href="{{ url_for('create_user') }}">Crear cuenta</a>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <img src="/Digifem.png" alt="Digifem logo" class="ms-4" />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse d-flex justify-content-evenly"
+        id="navbarNav"
+      >
+        <ul class="navbar-nav ms-4">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Perfil</a>
+          </li>
+        </ul>
+        <button class="">LogOut</button>
+      </div>
+    </nav>
+    <p class="m-50 text-center fs-1"><b>TU EMPRENDIMIENTO CHOTO</b></p>
+    <div class="row">
+      <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+        <div class="card">
+          <h5 class="card-header">Lista de tareas</h5>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Entrega de pedidos</td>
+                    <td>Juan Perez</td>
+                    <td>Aug 31 2022</td>
+                    <td>
+                      <a href="#" class="btn btn-sm btn-primary"
+                        >Agregar al calendario</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Reposicion de stock</td>
+                    <td>Rosa Melorto</td>
+                    <td>Aug 28 2022</td>
+                    <td>
+                      <a href="#" class="btn btn-sm btn-primary"
+                        >Agregar al calendario</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Compra de insumos</td>
+                    <td>Indutex SA</td>
+                    <td>Sep 09 2022</td>
+                    <td>
+                      <a href="#" class="btn btn-sm btn-primary"
+                        >Agregar al calendario</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a href="#" class="btn btn-block btn-light"
+              >Agregar todo al calendario</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-xl-4">
+        <!-- Another widget will go here -->
+
+        <div class="card">
+          <h5 class="card-header">Balance general</h5>
+          <div class="card-body">
+            <canvas id="traffic-chart" style="max-width: 500px"></canvas>
+            <form action="" class="mt-5">
+              <div class="ms-4">
+                <input
+                  type="number"
+                  name="ingreso"
+                  id="ingreso"
+                  placeholder="Ingreso"
+                />
+                <button type="submit">Agregar ingreso</button>
+              </div>
+            </form>
+            <form action="" class="mt-5">
+              <div class="mt-4">
+                <input
+                  type="number"
+                  name="egreso"
+                  id="egreso"
+                  placeholder="Egresos"
+                  class="ms-4"
+                />
+                <button type="submit">Agregar egreso</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      var ctxP = document.getElementById("traffic-chart").getContext("2d");
+      var PieChart = new Chart(ctxP, {
+        type: "pie",
+        data: {
+          labels: ["Egresos", "Ingresos"],
+          datasets: [
+            {
+              data: [90, 200],
+              backgroundColor: [
+                "#F7464A",
+                "#46bf6a",
+                "#FDB45C",
+                "#949FB1",
+                "#4D5360",
+              ],
+              hoverBackgroundColor: [
+                "#FF5A5E",
+                "#5AD3D1",
+                "#FFC870",
+                "#A8B3C5",
+                "#616774",
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+    </script>
+  </body>
 </html>
