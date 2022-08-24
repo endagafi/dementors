@@ -99,16 +99,20 @@ def create_user():
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
-    form = LoginForm()
-    user = User.query.filter_by(user_ci=form.ci.data).first()
-    print(user)
-    if form.validate_on_submit():
-        user = User.query.filter_by(user_ci=form.ci.data).first()
-        if user:
-            login_user(user)
-            return redirect(url_for('profile'))
-
-    return render_template("login.html", form=form)
+    try:
+        form1 = LoginForm()
+        print(request.form)
+        ci = request.form['ci']
+        if ci != "":
+            print("voy a conusltar")
+            user = User.query.filter_by(user_ci=ci).first()
+            print("================================hbfkja")
+            if user:
+                print("=====================fdhbjbdshhdbsbgfbskhdgf")
+                login_user(user)
+                return redirect(url_for('profile'))
+    except:
+        return render_template("login.html", form1 = form1)
 
     
 

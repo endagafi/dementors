@@ -28,7 +28,7 @@
             O
 
             <a
-              href="#"
+              href="/"
               class="block w-full px-5 py-3 text-center font-medium text-[#999999] hover:text-[#074D44] bg-white hover:bg-white"
             >
               Registrate en Segundos
@@ -47,35 +47,33 @@
                   C&eacute;dula de identidad
                 </label>
                 <div class="mt-1">
-                  {{ form.hidden_tag() }} {{ form.ci }}
-                  <label
-                    for="password"
-                    class="block text-sm font-medium text-gray-700"
-                  >
-                    Contrase&ntilde;a</label
-                  >{{ form.password }}
-
-                  <!-- <input
-                    id="email"
-                    name="email"
+                  <input
+                    id="ci"
+                    name="ci"
                     type="text"
                     autocomplete="email"
                     required
                     class="appearance-none block w-full px-3 py-2 border border-[gray-300] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#074D44] focus:border-[#074D44] sm:text-sm"
-                  /> -->
+                  />
                 </div>
               </div>
+              <label
+                for="password"
+                class="block text-sm font-medium text-gray-700"
+              >
+                Contrase&ntilde;a</label
+              >
 
               <div>
                 <div class="mt-1">
-                  <!-- <input
+                  <input
                     id="password"
                     name="password"
                     type="password"
                     autocomplete="current-password"
                     required
                     class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:[#074D44] focus:border-[#074D44] sm:text-sm"
-                  /> -->
+                  />
                 </div>
               </div>
 
