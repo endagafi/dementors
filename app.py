@@ -106,11 +106,11 @@ def login():
         if ci != "":
             print("voy a conusltar")
             user = User.query.filter_by(user_ci=ci).first()
-            print("================================hbfkja")
             if user:
-                print("=====================fdhbjbdshhdbsbgfbskhdgf")
                 login_user(user)
                 return redirect(url_for('profile'))
+            else:
+                return redirect(url_for('/'))
     except:
         return render_template("login.html", form1 = form1)
 
